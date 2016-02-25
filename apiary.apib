@@ -1,15 +1,15 @@
 version: v1
 uri_prefix: /api/v1 
 
-# Drivelog
+# Starter
 
-Drivelog is a simple api to handle the tracking of mileage and trips.
+Lumen starter app is a bootstrap of a microservice api or to scale as a backend for any client.
 
-# Average [/average]
+# User [/user]
 
-## Get the latest average [GET /average]
+## Get the an example [GET /user]
 
-To get the latest average from the previous trip for the dashboard.
+To get an example response
 
 + Request (application/json)
 
@@ -21,11 +21,7 @@ To get the latest average from the previous trip for the dashboard.
 
         {
             "status": 200,
-            "data": {
-                "km_per_liter": 13.67,
-                "liters_per_hundred_km": 7.32,
-                "total_trip_km": 451
-            }
+            "message": "Successfully fetched user data"
         }
         
 + Request (application/json)
@@ -40,12 +36,10 @@ To get the latest average from the previous trip for the dashboard.
             "status": 401,
             "message": "Invalid API Key"
         }
-        
-# Trip [/trip]
 
-## Add a new trip [POST /trip]
+## Add a new trip [POST /user]
 
-Adds a new trip entry to calculate a new average for your last trip.
+Adds a new user to the db.
 
 + Request (application/json)
 
@@ -56,22 +50,23 @@ Adds a new trip entry to calculate a new average for your last trip.
     + Body
 
             {
-                "odometer": "27123",
-                "liters_used": "34.12",
-                "fuel_price_per_liter": "11.94"
+                "first_name": "Sam",
+                "last_name": "Son",
+                "number": "27848118111",
+                "status": "enabled"
             }
             
 + Response 200 (application/json)
 
         {
             "status": 200,
-            "message": "Trip added successfully",
+            "message": "User added successfully",
             "data": {
-                "trip_id": "1",
+                "user_id": "1",
                 "links": [
                     {
                         "rel": "next",
-                        "uri": "/api/v1/trip/1"
+                        "uri": "/api/v1/user/1"
                     }
                 ]
             }
@@ -86,9 +81,10 @@ Adds a new trip entry to calculate a new average for your last trip.
     + Body
 
             {
-                "odometer": "27123",
-                "liters_used": "34.12",
-                "fuel_price_per_liter": "11.94"
+                "first_name": "Sam",
+                "last_name": "Son",
+                "number": "27848118111",
+                "status": "enabled"
             }
             
 + Response 401 (application/json)
@@ -108,56 +104,60 @@ Adds a new trip entry to calculate a new average for your last trip.
     + Body
 
             {
-                "liters_used": "34.12",
-                "fuel_price_per_liter": "11.94"
+                "last_name": "Son",
+                "number": "27848118111",
+                "status": "enabled"
             }
             
 + Response 400 (application/json)
 
         {
             "status": 400,
-            "message": "Missing required field (odometer)"
+            "message": "Missing required field (first_name)"
         }   
         
-        
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Token ApiKey123
-            
-            
+
+
     + Body
 
             {
-                "odometer": "27123",
-                "fuel_price_per_liter": "11.94"
+                "number": "27848118111",
+                "status": "enabled"
             }
-            
+
 + Response 400 (application/json)
 
         {
             "status": 400,
-            "message": "Missing required field (liters_used)"
-        }  
-        
+            "message": "Missing required field (first_name, last_name)"
+        }
+
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Token ApiKey123
-            
-            
+
     + Body
 
             {
-                "odometer": "27123",
-                "liters_used": "34.12"
+                "first_name": "Sam",
+                "last_name": "Son",
+                "status": "enabled"
+                "number": "someBadNumber"
             }
-            
-+ Response 400 (application/json)
+
++ Response 406 (application/json)
 
         {
-            "status": 400,
-            "message": "Missing required field (fuel_price_per_liter)"
+            "status": 406,
+            "message": "This number is not valid for the <REGION> region.",
+            "data": {
+                "required_format": "<required format for country>"
+            }
         }

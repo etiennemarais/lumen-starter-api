@@ -9,6 +9,7 @@
         "vlucas/phpdotenv": "~2.2",
         "barryvdh/laravel-cors": "0.7.x",
         "erusev/parsedown": "^1.6",
+        "giggsey/libphonenumber-for-php": "^7.2.3",
         "lygav/php-slackbot": "0.0.*"
     },
     "require-dev": {

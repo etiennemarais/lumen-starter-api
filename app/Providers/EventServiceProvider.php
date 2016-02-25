@@ -22,8 +22,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Queue::failing(function (JobFailed $event) {
-            //dump($event);
-
             //TODO Can post to slack here
         });
     }
