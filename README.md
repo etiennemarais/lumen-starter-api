@@ -10,3 +10,12 @@ Small starter bootstrap for a lumen application api
 - Multi tenancy that binds to a configurable database field
 - API root index is the documentation from your api blueprint
 - Custom validation that binds to a 406 response
+
+
+## Installation
+
+To install the starter site, just run the following command:
+
+```
+composer create-project --prefer-dist etiennemarais/lumen-starter starter
+```
