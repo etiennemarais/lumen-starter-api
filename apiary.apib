@@ -1,0 +1,163 @@
+version: v1
+uri_prefix: /api/v1 
+
+# Drivelog
+
+Drivelog is a simple api to handle the tracking of mileage and trips.
+
+# Average [/average]
+
+## Get the latest average [GET /average]
+
+To get the latest average from the previous trip for the dashboard.
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token ApiKey123
+            
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "data": {
+                "km_per_liter": 13.67,
+                "liters_per_hundred_km": 7.32,
+                "total_trip_km": 451
+            }
+        }
+        
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token WrongApiKey
+            
++ Response 401 (application/json)
+
+        {
+            "status": 401,
+            "message": "Invalid API Key"
+        }
+        
+# Trip [/trip]
+
+## Add a new trip [POST /trip]
+
+Adds a new trip entry to calculate a new average for your last trip.
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token ApiKey123
+            
+    + Body
+
+            {
+                "odometer": "27123",
+                "liters_used": "34.12",
+                "fuel_price_per_liter": "11.94"
+            }
+            
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Trip added successfully",
+            "data": {
+                "trip_id": "1",
+                "links": [
+                    {
+                        "rel": "next",
+                        "uri": "/api/v1/trip/1"
+                    }
+                ]
+            }
+        }
+        
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token WrongApiKey
+            
+    + Body
+
+            {
+                "odometer": "27123",
+                "liters_used": "34.12",
+                "fuel_price_per_liter": "11.94"
+            }
+            
++ Response 401 (application/json)
+
+        {
+            "status": 401,
+            "message": "Invalid API Key"
+        }
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token ApiKey123
+            
+            
+    + Body
+
+            {
+                "liters_used": "34.12",
+                "fuel_price_per_liter": "11.94"
+            }
+            
++ Response 400 (application/json)
+
+        {
+            "status": 400,
+            "message": "Missing required field (odometer)"
+        }   
+        
+        
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token ApiKey123
+            
+            
+    + Body
+
+            {
+                "odometer": "27123",
+                "fuel_price_per_liter": "11.94"
+            }
+            
++ Response 400 (application/json)
+
+        {
+            "status": 400,
+            "message": "Missing required field (liters_used)"
+        }  
+        
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token ApiKey123
+            
+            
+    + Body
+
+            {
+                "odometer": "27123",
+                "liters_used": "34.12"
+            }
+            
++ Response 400 (application/json)
+
+        {
+            "status": 400,
+            "message": "Missing required field (fuel_price_per_liter)"
+        }
