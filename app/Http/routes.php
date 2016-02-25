@@ -3,8 +3,8 @@
 $app->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($app) {
 
     // User resources
-    $app->get('/user', ['uses' => 'App\Http\Controllers\UsersController@index']);
-    $app->post('/user', ['uses' => 'App\Http\Controllers\UsersController@create']);
+    $app->get('/user', ['uses' => 'App\Http\Controllers\UserController@index']);
+    $app->post('/user', ['uses' => 'App\Http\Controllers\UserController@create']);
 
 });
 

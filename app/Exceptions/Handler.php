@@ -36,7 +36,7 @@ class Handler extends ExceptionHandler
     public function report(Exception $e)
     {
         Log::error(Exception::class . ": " . $e->getMessage() . " (code:{$e->getCode()})");
-        if (env('APP_ENV') !== 'testing') {
+        if (in_array(env('APP_ENV'), ['production', 'staging'])) {
             $options = array(
                 'username' => env('SLACK_BOT_NAME', 'lumen-starter-bot'),
                 'icon_emoji' => env('SLACK_BOT_EMOJI' ,':mushroom:'),

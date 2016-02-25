@@ -1,5 +1,5 @@
 <?php
-namespace Stater\Validation;
+namespace Starter\Validation;
 
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberType;

@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
     {
         app('validator')->extend('region', 'Starter\Validation\Phone@validateRegion');
         app('validator')->replacer('region', function($message, $attribute, $rule, $parameters) {
-            return str_replace(':region', Config::get('country_iso'), $message);
+            return str_replace(':region', env('HOME_REGION', 'ZA'), $message);
         });
     }
 

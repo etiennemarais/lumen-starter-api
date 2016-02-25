@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Starter\Users\User;
 use Starter\Users\UsersRepository;
@@ -16,7 +17,9 @@ class UserController extends Controller
      */
     public function index(Request $request, UsersRepository $repository)
     {
-        $user = $repository->findWithAttributes($request->all());
+        $user = $repository->findWithAttributes([
+            'id' => Config::get('user_id'), # auth middleware set this
+        ]);
 
         return $this->respondWithSuccess('Successfully fetched user data', $user);
     }

@@ -18,7 +18,7 @@ class User extends Model
     public static $rules = [
         'first_name' => 'required',
         'last_name' => 'required',
-        'number' => 'required',
+        'number' => 'required|region|min:11',
         'status' => 'required',
     ];
 

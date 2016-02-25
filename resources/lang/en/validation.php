@@ -9,7 +9,7 @@ return [
     'required' => 'The :attribute field is required.',
     "digits"   => "The :attribute must be :digits digits.",
     'custom'   => [
-        'phone_number' => [
+        'number' => [
             'region'   => 'The phone number is not the correct format for :region',
         ],
     ],
