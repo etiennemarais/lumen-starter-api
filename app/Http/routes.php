@@ -1,7 +1,10 @@
 <?php
 
 $app->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($app) {
-    // TODO Add Drivelog routes here
+
+    // User resources
+    $app->get('/user', ['uses' => 'App\Http\Controllers\UsersController@index']);
+    $app->post('/user', ['uses' => 'App\Http\Controllers\UsersController@create']);
 
 });
 

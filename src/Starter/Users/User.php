@@ -19,7 +19,7 @@ class User extends Model
         'first_name' => 'required',
         'last_name' => 'required',
         'number' => 'required',
-        'api_key' => 'required',
+        'status' => 'required',
     ];
 
     public $readable = 'User';
