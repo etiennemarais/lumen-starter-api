@@ -1,6 +1,8 @@
 # lumen-starter-api
 Small starter bootstrap for a lumen application api
 
+[![Build Status](https://travis-ci.org/etiennemarais/lumen-starter-api.svg?branch=master)](https://travis-ci.org/etiennemarais/lumen-starter-api)
+
 
 - Slack bot for exceptions
 - Domain separated business logic
