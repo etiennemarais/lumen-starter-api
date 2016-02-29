@@ -12,6 +12,7 @@ Small starter bootstrap for a lumen application api
 - Custom validation that binds to a 406 response
 
 
+
 ## Installation
 
 To install the starter site, just run the following command:
