@@ -1,6 +1,6 @@
 {
     "name": "etiennemarais/lumen-starter",
-    "description": "Lumen starter app is a bootstrap of a microservice api or to scale as a backend for any client.",
+    "description": "Lumen starter app is a bootstrap of a micro service api or to scale as a backend for any client.",
     "keywords": ["api", "starter", "lumen", "microservice", "backend", "bootstrap"],
     "license": "MIT",
     "type": "project",

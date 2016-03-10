@@ -10,7 +10,7 @@ Small starter bootstrap for a lumen application api
 - Multi tenancy that binds to a configurable database field
 - API root index is the documentation from your api blueprint
 - Custom validation that binds to a 406 response
-
+- Custom Application log file path
 
 ## Installation
 

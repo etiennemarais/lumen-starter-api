@@ -8,7 +8,7 @@ try {
     //
 }
 
-$app = new Laravel\Lumen\Application(
+$app = new Infrastructure\Application(
     realpath(__DIR__.'/../')
 );
 
