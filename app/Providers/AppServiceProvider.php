@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Infrastructure\Message\Alert\AlertMessage;
+use Infrastructure\Message\AlertMessageProvider;
 use Infrastructure\TenantScope\TenantScope;
+use Maknz\Slack\Client;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('Infrastructure\TenantScope\TenantScope', function ($app) {
             return new TenantScope();
+        });
+
+        $this->app->bind(AlertMessageProvider::class, function() {
+            $client = new Client(env('SLACK_WEBHOOK_URL'));
+
+            return new AlertMessage($client);
         });
     }
 }

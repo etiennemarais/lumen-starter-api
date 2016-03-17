@@ -17,6 +17,15 @@ $app->withFacades();
 
 $app->singleton(Illuminate\Contracts\Debug\ExceptionHandler::class, App\Exceptions\Handler::class);
 $app->singleton(Illuminate\Contracts\Console\Kernel::class, App\Console\Kernel::class);
+$app->singleton('filesystem', function ($app) {
+    return $app->loadComponent('filesystems', Illuminate\Filesystem\FilesystemServiceProvider::class, 'filesystem');
+});
+$app->bind(Illuminate\Contracts\Filesystem\Factory::class, function($app) {
+    return $app['filesystem'];
+});
+$app->bind(Illuminate\Contracts\Logging\Log::class, function($app) {
+    return $app['Psr\Log\LoggerInterface'];
+});
 
 # Middleware
 $app->routeMiddleware([
@@ -27,9 +36,14 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Barryvdh\Cors\LumenServiceProvider::class);
-$app->configure('cors');
+$app->register(\Maknz\Slack\SlackServiceProvider::class);
+$app->register(Spatie\Backup\BackupServiceProvider::class);
 $app->configure('app');
+$app->configure('cors');
+$app->configure('filesystems');
+$app->configure('laravel-backup');
 $app->configure('queue');
+$app->configure('slack');
 
 # Routes
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
