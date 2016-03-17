@@ -13,5 +13,5 @@ install:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-    -vendor/bin/phpunit
-    - vendor/bin/phpspec run -v
+  - vendor/bin/phpunit
+  - vendor/bin/phpspec run -v
