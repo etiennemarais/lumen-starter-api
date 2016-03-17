@@ -4,7 +4,8 @@ Small starter bootstrap for a lumen application api
 [![Build Status](https://travis-ci.org/etiennemarais/lumen-starter-api.svg?branch=master)](https://travis-ci.org/etiennemarais/lumen-starter-api)
 
 
-- Slack bot for exceptions
+- Slack bot for notifications
+- Config setups for laravel package backwards compatibility
 - Domain separated business logic
 - Api key middleware authentication
 - API Blueprint that documents the system
@@ -13,6 +14,7 @@ Small starter bootstrap for a lumen application api
 - API root index is the documentation from your api blueprint
 - Custom validation that binds to a 406 response
 - Custom Application log file path
+- Backups via scheduled tasks
 
 
 ## Installation

@@ -10,8 +10,10 @@
         "vlucas/phpdotenv": "~2.2",
         "barryvdh/laravel-cors": "0.7.x",
         "erusev/parsedown": "^1.6",
-        "giggsey/libphonenumber-for-php": "^7.2.3",
-        "lygav/php-slackbot": "0.0.*"
+        "maknz/slack": "~1.7",
+        "spatie/laravel-backup": "~3.1",
+        "illuminate/log": "~5.2",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -27,7 +29,10 @@
             "App\\": "app/",
             "Starter\\": "src/Starter",
             "Infrastructure\\": "src/Infrastructure/"
-        }
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [
