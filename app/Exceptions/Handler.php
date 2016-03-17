@@ -56,7 +56,9 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e, 404);
         } elseif ($e instanceof NotFoundHttpException) {
-            $e = new NotFoundHttpException('The route you are looking for does not exist', $e, 404);
+            $message = "The route ({$request->server->get('REQUEST_URI')}) you are looking for does not exist";
+            $e = new NotFoundHttpException($message, $e, 404);
+            $this->alertMessage->notifyOfError($e);
         } elseif ($e instanceof AuthorizationException) {
             $e = new HttpException(403, $e->getMessage());
         }
