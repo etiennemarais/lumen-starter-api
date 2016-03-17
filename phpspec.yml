@@ -1,0 +1,11 @@
+suites:
+    Starter:
+        namespace: Starter
+        psr4_prefix: Starter
+        src_path: src/Starter
+        spec_path: tests/Starter
+    Infrastructure:
+        namespace: Infrastructure
+        psr4_prefix: Infrastructure
+        src_path: src/Infrastructure
+        spec_path: tests/Infrastructure
